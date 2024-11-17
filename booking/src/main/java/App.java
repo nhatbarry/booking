@@ -13,7 +13,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
 import view.LoginView;
-import database.JDBC;
 
 public class App {
     public static void main(String[] args) {
@@ -24,6 +23,5 @@ public class App {
         }
         LoginView view = new LoginView();
         view.setVisible(true);
-        System.out.println(JDBC.login("nhat", "1234"));
     }
 }

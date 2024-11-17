@@ -4,6 +4,10 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
+import controller.LoginController;
+
 /**
  *
  * @author nhatb
@@ -125,7 +129,25 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_loginSignupBtnActionPerformed
 
     private void loginLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginLoginBtnActionPerformed
-        // TODO add your handling code here:
+        if (loginUsernameField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username không được trống!");
+        }
+        else{
+            String username = loginUsernameField.getText();
+            String password = new String(loginPasswordField.getPassword());
+            String loginRole = LoginController.login(username, password);
+            if (loginRole.equals("manager")) {
+                LoginView.this.dispose();
+                new ManagerMainView().setVisible(true);
+            }
+            else if(loginRole.equals("customer")){
+                LoginView.this.dispose();
+                new CustomerMainView().setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Sai thông tin đăng nhập!");
+            }
+        }
     }//GEN-LAST:event_loginLoginBtnActionPerformed
 
     /**
@@ -173,4 +195,12 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JButton loginSignupBtn;
     private javax.swing.JTextField loginUsernameField;
     // End of variables declaration//GEN-END:variables
+    public void setLoginPasswordField(String text) {
+        this.loginPasswordField.setText(text);
+    }
+
+    public void setLoginUsernameField(String text) {
+        this.loginUsernameField.setText(text);;
+    }
+    
 }

@@ -4,6 +4,10 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
+import controller.LoginController;
+
 /**
  *
  * @author nhatb
@@ -132,7 +136,30 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_registerLoginBtnActionPerformed
 
     private void registerSignupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerSignupBtnActionPerformed
-        // TODO add your handling code here:
+        String username = registerUsernameField.getText();
+        String pass = new String(registerPasswordField.getPassword());
+        String cfpass = new String(registerConfirmPasswordField.getPassword());
+        if (username.isBlank() || pass.isBlank() || cfpass.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
+        }
+        else{
+            if (!pass.equals(cfpass)) {
+                JOptionPane.showMessageDialog(this, "Xác nhận mật khẩu không khớp!");
+            }
+            else{
+                if (LoginController.register(username, pass)) {
+                    JOptionPane.showMessageDialog(this, "Tạo tài khoản thành công \n Quay về đăng nhập...");
+                    Register.this.dispose();
+                    LoginView loginView = new LoginView();
+                    loginView.setVisible(true);
+                    loginView.setLoginUsernameField(username);
+                    loginView.setLoginPasswordField(pass);
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Có lỗi xảy ra!");
+                }
+            }
+        }
     }//GEN-LAST:event_registerSignupBtnActionPerformed
 
     /**

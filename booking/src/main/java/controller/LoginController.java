@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package database;
+package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import database.Constant;
+
 /**
  *
  * @author nhatb
  */
-public class JDBC {
+public class LoginController {
     public static boolean register(String username, String password){
         try {
             if (!isUserExist(username)) {
@@ -75,8 +77,8 @@ public class JDBC {
                 return role;
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
-        return null;
+        return "";
     }
 }
