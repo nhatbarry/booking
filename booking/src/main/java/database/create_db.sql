@@ -28,3 +28,16 @@ create table people
 	, homestay_booked int foreign key references homestay(homestay_id)
 )
 go
+
+create view login
+as
+select user_name, passwd from people
+
+create procedure register @username varchar(40), @password varchar(40)
+as
+insert into people (user_name, passwd)
+values
+(@username, @password)
+go
+
+exec register @username = 'testkhachhang1', @password = '123456'

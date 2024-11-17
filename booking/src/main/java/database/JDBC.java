@@ -44,4 +44,39 @@ public class JDBC {
         }
         return true;
     }
+
+    public static boolean validateLogin(String username, String password){
+        try {
+            if (isUserExist(username)) {
+                Connection connection = DriverManager.getConnection(Constant.DB_URL, Constant.DB_USERNAME, Constant.DB_PASSWORD);
+                PreparedStatement sql = connection.prepareStatement("select passwd from login where user_name = ? and passwd = ?");
+                sql.setString(1, username);
+                sql.setString(2, password);
+                ResultSet rs = sql.executeQuery();
+                if (!rs.isBeforeFirst()) {
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    public static String login(String username, String password){
+        try {
+            if (validateLogin(username, password)) {
+                Connection connection = DriverManager.getConnection(Constant.DB_URL, Constant.DB_USERNAME, Constant.DB_PASSWORD);
+                PreparedStatement sql = connection.prepareStatement("select user_role from login where user_name = ?");
+                sql.setString(1, username);
+                ResultSet rs = sql.executeQuery();
+                rs.next();
+                String role = rs.getString(1);
+                return role;
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return null;
+    }
 }
