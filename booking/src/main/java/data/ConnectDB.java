@@ -31,6 +31,7 @@ public class ConnectDB {
             while (rs.next()) {
                 System.out.print(rs.getInt(1) + ":  ");
                 System.out.print(rs.getString(2));
+                System.out.print(rs.getString(3));
                 System.out.println();
             }
         } catch (Exception e) {
