@@ -20,6 +20,7 @@ public class App {
     public static void main(String[] args) {
         try {
             EventQueue.invokeLater(new Runnable() {
+                @Override
                 public void run(){
                     try {
                         UIManager.setLookAndFeel(new FlatMacLightLaf());
