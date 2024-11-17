@@ -24,3 +24,21 @@ values
 , (N'Tre House Homestay', N'ngõ 781 Đường Hồng Hà, Chương Dương Độ, Hoàn Kiếm, Hà Nội', 0, 150000)
 , (N'Tuti Homestay Hanoi', N'số 06 Tông Đản, Hoàn Kiếm, Hà Nội', 0, 600000)
 go
+
+
+insert into people
+values
+('nhat', '1234', N'Lê Anh Nhật', '0354059004', 'nhatbarry@gmail.com', 'manager', NULL)
+, ('hung', '1234', N'Phạm Việt Hưng', NULL, NULL, 'manager', NULL)
+, ('tung', '1234', N'Nguyễn Tài Tùng', NULL, NULL, 'manager', NULL)
+, ('huy', '1234', N'Phạm Văn Huy', NULL, NULL, 'manager', NULL)
+, ('tien', '1234', N'Trần Việt Tiến', NULL, NULL, 'manager', NULL)
+, ('jack', '1234', N'Trịnh Trần Phương Tuấn', NULL, NULL, 'customer', NULL)
+, ('sontung', '123456', N'Nguyễn Thanh Tùng', NULL, NULL, 'customer', NULL)
+, ('ccmk', '123456', N'Nguyễn Văn Quang', NULL, NULL, 'customer', NULL)
+, ('mck', '123456', N'Nghiêm Vũ Hoàng Long', NULL, NULL, 'customer', NULL)
+, ('tlinh', '123456', N'Trần Thảo Linh', NULL, NULL, 'customer', NULL)
+go
+
+select * from people
+select * from homestay
