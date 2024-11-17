@@ -40,4 +40,3 @@ values
 (@username, @password)
 go
 
-exec register @username = 'testkhachhang1', @password = '123456'
