@@ -14,6 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
 import view.LoginView;
+import data.ConnectDB;
 
 
 public class App {
@@ -29,6 +30,7 @@ public class App {
                     }
                     LoginView view = new LoginView();
                     view.setVisible(true);
+                    ConnectDB.connectMSSQL();
                 }
             });
         } catch (Exception e) {
